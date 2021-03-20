@@ -2,6 +2,7 @@ package com.pca.gui;
 
 import com.pca.model.*;
 import com.pca.repository.*;
+import lombok.Data;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
@@ -15,6 +16,7 @@ import java.util.List;
 /**
  * Created by fxc on 07/03/2020.
  */
+@Data
 public class CarteUsJap {
     public List<NomGeneralise> nomsGeneralises;
     public NomGeneralise nomGeneralise;

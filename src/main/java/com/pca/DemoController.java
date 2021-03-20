@@ -84,11 +84,11 @@ public class DemoController {
     }
 
 
-    @RequestMapping(value = { "/", "/index" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/", "/index"}, method = RequestMethod.GET)
     //@ResponseBody
     public String index(Model model) {
         model.addAttribute("message", message);
-        return "pages/index";
+        return "pages/index"; //"pages/index"
     }
 
 

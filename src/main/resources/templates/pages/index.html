@@ -3,11 +3,26 @@
 <head>
     <meta charset="UTF-8" />
     <title>Welcome</title>
-    <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>
+
+    <!-- ... <link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/> ... -->
+
+    <!-- ICI WEBCOMPONENTS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css"
+          integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/flatpickr/dist/flatpickr.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/flatpickr"></script>
+    <script src="app.js" type="module" defer></script>
+
 </head>
 <body>
-<h1>Welcome</h1>
+<h1>Bonjour</h1>
 <h2 th:utext="${message}">..!..</h2>
+
+<!-- ... code HTML existant ... -->
+
+<div id="like_button_container"></div>
+
+<!-- ... code HTML existant ... -->
 
 <!--
 
@@ -18,6 +33,28 @@
    -->
 
 <a th:href="@{/personList}">Person List</a>
+
+<hr>
+<template id="demo">
+    <my-button>
+        <div slot="inbutton"> Mon texte</div>
+        <div slot="outbutton">
+            <second-timer prefix="Mon compteur"></second-timer>
+        </div>
+    </my-button>
+
+    <div class="form-group">
+        <label for="start"> Date de début</label>
+        <input type="text" id="start" class="form-control" is="date-picker">
+    </div>
+</template>
+
+
+<!--<date-picker></date-picker>-->
+
+
+
+<button id="add" class="btn btn-primary"> Ajouter un champs</button>
 
 </body>
 
