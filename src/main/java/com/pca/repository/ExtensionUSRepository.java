@@ -1,39 +1,19 @@
 package com.pca.repository;
 
+import com.pca.model.CartePokemon;
+import com.pca.model.ExtensionJAP;
 import com.pca.model.ExtensionUS;
-import com.pca.model.SerieUS;
+import org.springframework.data.jpa.repository.Query;
+import org.springframework.data.repository.CrudRepository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
+public interface ExtensionUSRepository extends CrudRepository<ExtensionUS, Integer> {
 
-public class ExtensionUSRepository {
-    private EntityManager em;
-    public ExtensionUSRepository(EntityManager em){
-        this.em = em;
-    }
-    public SerieUS getExtensionUSById(Integer id) {
-        return em.find(SerieUS.class,id);
-    }
+    ExtensionUS findExtensionUSById(Integer id);//getCartePokemonUSByCardRechercheExtension
+    /*
+    @Query(value = "select carte From CartePokemon as carte  where carte.nomUS = ?1 AND carte.Recherche = ?2 AND carte.extensionus=?3", nativeQuery = true)
+    ExtensionUS findCartePokemonByNomUSAndRechercheAndExtensionUS(String nomUS, String Recherche, ExtensionUS eus);
+    @Query(value = "select carte From CartePokemon as carte  where carte.nomUS = ?1 AND carte.Recherche = ?2 AND carte.extensionus=?3", nativeQuery = true)
+    ExtensionUS findCartePokemonByNomJAPAndRechercheAndExtensionUS(String nomUS,String Recherche,ExtensionJAP eus);
 
-    public ExtensionUS getExtensionUSByNomFR(String nomFR) {
-        TypedQuery<ExtensionUS> q = em.createQuery("From ExtensionUS s WHERE s.nomFR = : nomFR", ExtensionUS.class);
-        return q.getSingleResult();
-    }
-
-    public ExtensionUS saveExtensionUS(ExtensionUS extensionUS) {
-        if(extensionUS.getId()==null){
-            em.persist(extensionUS);
-        }else{
-            extensionUS = em.merge(extensionUS);
-        }
-        return extensionUS;
-    }
-
-    public void deleteExtensionUS(ExtensionUS extensionUS) {
-        if(em.contains(extensionUS))
-            em.remove(extensionUS);
-        else
-            em.merge(extensionUS);
-
-    }
+     */
 }

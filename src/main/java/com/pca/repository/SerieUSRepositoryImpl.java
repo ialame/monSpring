@@ -5,7 +5,7 @@ import com.pca.model.SerieUS;
 import javax.persistence.EntityManager;
 import javax.persistence.TypedQuery;
 
-public class SerieUSRepositoryImpl implements SerieUSRepository {
+public class SerieUSRepositoryImpl implements SerieUS0Repository {
     private EntityManager em;
     public SerieUSRepositoryImpl(EntityManager em){
         this.em = em;

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8" />
+    <title>Person List</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js" integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0" crossorigin="anonymous"></script>
+    <!--<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>-->
+    <script th:inline="javascript">
+        function afficherAgenda(x) {
+            alert('Bonjour'+x);
+            var elem = document.getElementById('idSerie');
+            elem.addEventListener('select', function() {
+                alert('La sélection a changé !');
+            }, false);
+        }
+    </script>
+</head>
+<body>
+<h1>Liste des cartes</h1>
+<a href="addPerson">Add Carte</a>
+<br/><br/>
+
+<div>
+
+
+
+    <select id="idSerie" class="combobox" data-style="btn-primary" onChange="afficherAgenda(this.value);">
+        <option  th:each ="serieUS : ${seriesUS}"  th:value="${serieUS.getId()}" th:text="${serieUS.getNomUS()}"
+                ></option>
+    </select>
+</div>
+
+<!--<div>
+    <table class="table table-striped">
+        <tr>
+            <th>id</th>
+            <th>nomFR</th>
+            <th>nomUS</th>
+            <th>Recherche</th>
+            <th>Rareté</th>
+            <th>Type</th>
+            <th>enExtpansion</th>
+            <th>japExtpansion</th>
+            <th>japName</th>
+            <th>JapTraductionName</th>
+            <th>JapNum</th>
+            <th>JapRarity</th>
+            <th>JapType</th>
+        </tr>
+        <tr th:each ="carte : ${cartes}">
+            <td th:utext="${carte.getId()}">...</td>
+            <td th:utext="${carte.getNomFR()}">...</td>
+            <td th:utext="${carte.getNomUS()}">...</td>
+            <td th:utext="${carte.getRecherche()}">...</td>
+            <td th:utext="${carte.getRarete()}">...</td>
+            <td th:utext="${carte.getType1()}">...</td>
+            <td th:utext="${carte.getEnExpansion()}">...</td>
+            <td th:utext="${carte.getJapExpansion()}">...</td>
+            <td th:utext="${carte.getJapName()}">...</td>
+            <td th:utext="${carte.getJapTraductionName()}">...</td>
+            <td th:utext="${carte.getJapNum()}">...</td>
+            <td th:utext="${carte.getJapRarity()}">...</td>
+            <td th:utext="${carte.getJapType()}">...</td>
+
+        </tr>
+    </table>
+</div>-->
+
+</body>
+</html>

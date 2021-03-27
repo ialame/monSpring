@@ -1,39 +1,16 @@
 package com.pca.repository;
 
 import com.pca.model.ExtensionJAP;
-import com.pca.model.SerieJAP;
+import org.springframework.data.repository.CrudRepository;
 
-import javax.persistence.EntityManager;
-import javax.persistence.TypedQuery;
+public interface ExtensionJAPRepository extends CrudRepository<ExtensionJAP, Integer> {
 
-public class ExtensionJAPRepository {
-    private EntityManager em;
-    public ExtensionJAPRepository(EntityManager em){
-        this.em = em;
-    }
-    public SerieJAP getExtensionJAPById(Integer id) {
-        return em.find(SerieJAP.class,id);
-    }
+    ExtensionJAP findExtensionJAPById(Integer id);//getCartePokemonUSByCardRechercheExtension
+    /*
+    @Query(value = "select carte From CartePokemon as carte  where carte.nomUS = ?1 AND carte.Recherche = ?2 AND carte.extensionus=?3", nativeQuery = true)
+    ExtensionUS findCartePokemonByNomUSAndRechercheAndExtensionUS(String nomUS, String Recherche, ExtensionUS eus);
+    @Query(value = "select carte From CartePokemon as carte  where carte.nomUS = ?1 AND carte.Recherche = ?2 AND carte.extensionus=?3", nativeQuery = true)
+    ExtensionUS findCartePokemonByNomJAPAndRechercheAndExtensionUS(String nomUS,String Recherche,ExtensionJAP eus);
 
-    public ExtensionJAP getExtensionJAPByNomFR(String nomFR) {
-        TypedQuery<ExtensionJAP> q = em.createQuery("From ExtensionJAP s WHERE s.nom = : nomFR", ExtensionJAP.class);
-        return q.getSingleResult();
-    }
-
-    public ExtensionJAP saveExtensionJAP(ExtensionJAP extensionJAP) {
-        if(extensionJAP.getId()==null){
-            em.persist(extensionJAP);
-        }else{
-            extensionJAP = em.merge(extensionJAP);
-        }
-        return extensionJAP;
-    }
-
-    public void deleteExtensionJAP(ExtensionJAP extensionJAP) {
-        if(em.contains(extensionJAP))
-            em.remove(extensionJAP);
-        else
-            em.merge(extensionJAP);
-
-    }
+     */
 }

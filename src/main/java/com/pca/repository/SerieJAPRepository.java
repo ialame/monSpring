@@ -1,10 +1,10 @@
 package com.pca.repository;
 
 import com.pca.model.SerieJAP;
+import org.springframework.data.repository.CrudRepository;
 
-public interface SerieJAPRepository {
-    SerieJAP getSerieJAPById(Integer id);
-    SerieJAP getSerieJAPByNomFR(String nomFR);
-    SerieJAP saveSerieJAP(SerieJAP serieJAP);
-    void deleteSerieJAP(SerieJAP serieJAP);
+public interface SerieJAPRepository extends CrudRepository<SerieJAP, Integer> {
+
+    SerieJAP findSerieJAPById(Integer id);
+
 }

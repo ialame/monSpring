@@ -1,10 +1,8 @@
 package com.pca.repository;
 
 import com.pca.model.SerieUS;
+import org.springframework.data.repository.CrudRepository;
 
-public interface SerieUSRepository {
-    SerieUS getSerieUSById(Integer id);
-    SerieUS getSerieUSByNomFR(String nomFR);
-    SerieUS saveSerieUS(SerieUS serieUS);
-    void deleteSerieUS(SerieUS serieUS);
+public interface SerieUSRepository extends CrudRepository<SerieUS, Integer> {
+    SerieUS findSerieUSById(Integer id);
 }

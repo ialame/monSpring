@@ -4,9 +4,11 @@ package com.pca;
 import com.pca.form.PersonForm;
 import com.pca.model.CartePokemon;
 import com.pca.model.ExtensionUS;
+import com.pca.model.SerieUS;
 import com.pca.model.Person;
 import com.pca.repository.CartePokemon2Repository;
-import com.pca.repository.ExtensionUS2Repository;
+import com.pca.repository.ExtensionUSRepository;
+import com.pca.repository.SerieUSRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Controller;
@@ -24,7 +26,9 @@ public class DemoController {
     @Autowired
     private CartePokemon2Repository cartePokemon2Repository;
     @Autowired
-    private ExtensionUS2Repository extensionUS2Repository;
+    private ExtensionUSRepository extensionUSRepository;
+    @Autowired
+    private SerieUSRepository serieUSRepository;
     @PostMapping("/add")
     public String addCustomer(@RequestParam String first, @RequestParam String last) {
         Customer customer = new Customer();
@@ -41,13 +45,27 @@ public class DemoController {
     private static List<CartePokemon> cartes = new ArrayList<CartePokemon>();
     @GetMapping("/find/{id}")
     public String findCustomerById(@PathVariable Integer id,Model model) {
-        ExtensionUS extensionUS = extensionUS2Repository.findExtensionUSById(10);
+        ExtensionUS extensionUS = extensionUSRepository.findExtensionUSById(10);
         cartes = extensionUS.getCartes();
         //CartePokemon cp = cartePokemon2Repository.findCartePokemonById(2);
         //cartes.add(cp);
         //System.out.println("\n\n\n"+cp.Recherche+"\n\n\n");
         model.addAttribute("cartes", cartes);
         return "pages/personList";
+    }
+
+
+    @RequestMapping(value = { "/jebay" }, method = RequestMethod.GET)
+    public String showJEbayPage(Model model) {
+
+        Iterable<SerieUS> seriesUS = serieUSRepository.findAll();
+        //cartes = serieUS.getCartes();
+        //CartePokemon cp = cartePokemon2Repository.findCartePokemonById(2);
+        //cartes.add(cp);
+        //System.out.println("\n\n\n"+cp.Recherche+"\n\n\n");
+        model.addAttribute("seriesUS", seriesUS);
+
+        return "pages/jebay";
     }
 
     @RequestMapping(value = { "/addPerson" }, method = RequestMethod.GET)
