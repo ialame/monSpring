@@ -8,11 +8,18 @@
     <!--<link rel="stylesheet" type="text/css" th:href="@{/css/style.css}"/>-->
     <script th:inline="javascript">
         function afficherAgenda(x) {
-            alert('Bonjour'+x);
-            var elem = document.getElementById('idSerie');
-            elem.addEventListener('select', function() {
-                alert('La sélection a changé !');
-            }, false);
+            var s='<table>'+
+                '<th:block th:each="serieUS : ${seriesUS}">'+
+                    '<tr>'+
+                    '<td th:text="${serieUS.getId()}">...</td>'+
+                    '</tr>'+
+
+                    '</th:block>'+
+                    '</table>'
+            //var elem = document.getElementById('idSerie');
+            //elem.addEventListener('select', function() {
+                alert(s);
+           // }, false);
         }
     </script>
 </head>

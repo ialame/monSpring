@@ -55,7 +55,7 @@ public class DemoController {
     }
 
 
-    @RequestMapping(value = { "/jebay" }, method = RequestMethod.GET)
+    @RequestMapping(value = { "/ebay" }, method = RequestMethod.GET)
     public String showJEbayPage(Model model) {
 
         Iterable<SerieUS> seriesUS = serieUSRepository.findAll();
@@ -65,8 +65,25 @@ public class DemoController {
         //System.out.println("\n\n\n"+cp.Recherche+"\n\n\n");
         model.addAttribute("seriesUS", seriesUS);
 
-        return "pages/jebay";
+        //return "pages/jebay";
+        return "ebay";
     }
+    @RequestMapping(value = { "/ebaydeux" })
+    public String showJEbay2Page(@ModelAttribute SerieUS serieUS, Model model) {
+        System.out.println("\n\n\n\n"+serieUS+"\n\n\n\n");
+        Iterable<ExtensionUS> extensionsUS = extensionUSRepository.findExtensionUSBySerie(serieUS);
+        //cartes = serieUS.getCartes();
+        //CartePokemon cp = cartePokemon2Repository.findCartePokemonById(2);
+        //cartes.add(cp);
+        //System.out.println("\n\n\n"+cp.Recherche+"\n\n\n");
+        model.addAttribute("extensionsUS", extensionsUS);
+
+        //return "pages/jebay";
+        return "redirect:ebay";
+    }
+
+
+
 
     @RequestMapping(value = { "/addPerson" }, method = RequestMethod.GET)
     public String showAddPersonPage(Model model) {
